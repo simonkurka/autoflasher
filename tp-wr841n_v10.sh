@@ -27,6 +27,7 @@ done
 echo " \o/"
 
 # get "secret" session string
+curl --silent --cookie ${COOKIE} "${ROUTER_IP}/userRpm/LoginRpm.htm?Save=Save" > /dev/null 2>&1
 TPLINK_SESSION=$(curl --silent --cookie ${COOKIE} "${ROUTER_IP}/userRpm/LoginRpm.htm?Save=Save" | sed 's|.*/\([A-Z]*\)/.*|\1|' | head -n 1)
 echo "Logged in, Session string: ${TPLINK_SESSION}"
 
